@@ -1,0 +1,17 @@
+<% provide(:title, "Layouts") %>
+<h1 id="page-title">Layouts</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Last Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @layouts.each do |lay| %>
+      <%= render partial: "layouts/layout", locals:{layout: lay} %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Add Layout", new_layout_path, class: "btn" %>

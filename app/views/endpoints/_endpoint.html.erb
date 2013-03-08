@@ -1,0 +1,10 @@
+<% @endpoints.each do |endpoint| %>
+<tr>
+  <td><%= endpoint.name %></td>
+  <td><%= endpoint.type.gsub('Endpoint', '').upcase %></td>
+  <td><%= time_ago_in_words(endpoint.updated_at) %> ago</td>
+  <td><%= link_to "edit", edit_endpoint_path(endpoint) %></td>
+  <td><%= link_to "delete", endpoint, method: :delete,
+                                      data: { confirm: "You sure?" } %></td>
+</tr>
+<% end %>

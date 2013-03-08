@@ -1,0 +1,23 @@
+<% provide(:title, 'New Content Layout') %>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+
+<h1 id="page-title">New Content Layout</h1>
+
+<%= semantic_form_for @content_layout, url: content_content_layouts_path(@content) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.inputs do %>
+    <div class="form-item horizontal-item">
+  	  <%= f.input :name %>
+      <%= f.input :layout_id, as: :select,
+                              collection: @layouts.collect { |p| [p.name, p.id] } %>
+    </div>
+  <% end %>
+
+  <div class="form-item horizontal-item">
+    <label></label>
+	<%= f.submit 'Create Layout', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

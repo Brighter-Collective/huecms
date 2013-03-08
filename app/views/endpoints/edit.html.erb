@@ -1,0 +1,19 @@
+<% provide(:title, "Edit Endpoint") %>
+<h1>Edit Endpoint</h1>
+<%= form_for(@endpoint, as: :endpoint) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <% case @endpoint.type %>
+  <% when 'FtpEndpoint', 'SftpEndpoint' %>
+    <%= render "ftp_fields", f: f %>
+  <% when 'FacebookEndpoint' %>
+    <%= render "facebook_fields", f: f %>
+  <% when 'TwitterEndpoint' %>
+    <%= render "twitter_fields", f: f %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= link_to "Back", endpoints_path, class: "btn" %>
+    <%= f.submit "Save endpoint", class: "btn btn-primary" %>
+  </div>
+<% end %>

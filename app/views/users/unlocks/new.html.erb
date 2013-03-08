@@ -1,0 +1,26 @@
+
+<div class="content-wrapper not-signed-in" id="resend-unlock-page">
+	<div class="header">
+		<div class="page-header left">Unlock</div>
+		<div class="clear"></div>
+	</div>
+	<div class="main-content single-column-layout">
+		<h1 class="page-title">Resend unlock instructions</h1>
+		
+		<div class="clear"></div>
+
+		<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+		  <%= devise_error_messages! %>
+
+		  <div><%= f.label :email %><br />
+		  <%= f.email_field :email, :autofocus => true %></div>
+
+		  <div><%= f.submit "Resend unlock instructions" %></div>
+		<% end %>
+
+		<%= render "devise/shared/links" %>
+		
+
+		<div class="clear"></div>
+	</div>
+</div>

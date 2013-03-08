@@ -1,0 +1,54 @@
+<div class="content-wrapper" id="site-overview-page">
+	<div class="main-content-wrapper">
+		<div class="main-content">
+			<div class="right-side-body-content">
+				<%= form_for @user, :url => {:action =>"update_user"} do |f| %>
+				<h1 class="page-title">Edit <%= @user.username rescue "" %></h1>
+				<div class="breadcrumbs"></div>
+				<div class="clear"></div>
+					<input type="hidden" name="user_id" value="<%=params[:user_id]%>">
+						<div class="form-item horizontal-item">
+							<label>Email</label>
+							<%= f.text_field :email, :name => 'user[email]', :class => 'check_email' rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>Password</label>
+							<%= f.password_field :password, :name => 'user[password]' rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>First Name</label>
+							<%= f.text_field :first_name, :name => 'user[first_name]' rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>Last Name</label>
+							<%= f.text_field :last_name, :name => 'user[last_name]' rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>User Name</label>
+							<%= f.text_field :username, :name => 'user[username]' rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>User Type</label>
+							<%= f.collection_select :role, User::ROLES, :to_s, :humanize, {},  {:name => 'user[role]'}  rescue "" %>
+						</div>
+
+						<div class="form-item horizontal-item">
+							<label>&nbsp;</label>
+							<span class="btn"><a href="/admin/users">Cancel</a></span>
+							<%= f.submit 'save', class: "btn" %>
+						</div>
+				<% end %>
+
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+
+

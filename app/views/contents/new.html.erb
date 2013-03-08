@@ -1,0 +1,9 @@
+<% provide(:title, "Create New Content") %>
+<h1>Create Content</h1>
+
+<%= form_for @content do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Create Content', class: "button add-new-content submit right" %>
+<% end %>

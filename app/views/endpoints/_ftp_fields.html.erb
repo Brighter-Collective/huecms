@@ -1,0 +1,19 @@
+<label>Type</label>
+<%= f.select(:type, options_for_select([["FTP", "FtpEndpoint"],
+                                        ["SFTP", "SftpEndpoint"]])) %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :path %>
+<%= f.text_field :path %>
+
+<%= f.label :address %>
+<%= f.text_field :address %>
+

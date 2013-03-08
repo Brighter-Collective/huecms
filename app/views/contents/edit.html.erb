@@ -1,0 +1,90 @@
+<% provide(:title, 'Edit Content') %>
+<%= javascript_include_tag 'content.js' %>
+<h1>Edit Content</h1>
+
+<h2 id="content_path" data-path="<%= @content.path %>"><%= (@content.path + "/" + @content.name).html_safe %></h2>
+
+<%= form_for @content, html: { class: "form-inline" } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.text_field :name %>
+
+  <%= f.button "Update Title", class: "btn" %>
+<% end %>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Last modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @content.content_layouts %>
+  </tbody>
+</table>
+
+<%= link_to "Add Layout", new_content_content_layout_path(@content),
+                        class: "btn btn-large",
+                        style: "float:left; margin-right:10px" %>
+<% if @content.needs_review %>
+  <div class="btn btn-large disabled">Review in Progress</div>
+<% else %>
+  <%= form_for @content, html: { class: 'form-inline' } do |f| %>
+    <%= f.hidden_field :needs_review, :value => 1 %>
+    <%= f.submit "Mark For Review", class: "btn btn-large" %>
+  <% end %>
+<% end %>
+
+<!-- Comments -->
+<div class="comments">
+	<label>Comments</label>
+	<ul class="comments-content">
+		<%= render :partial => '/comments/comment', :collection => @content.comments %>
+	</ul>
+	<%= form_tag "", :id => "new_comment_form" do %>
+		<label>Leave Comment</label>
+		<%= hidden_field_tag "comment[commentable_id]", "#{@content.id}" %>
+		<%= hidden_field_tag "comment[commentable_type]", "Content" %>
+		<%= hidden_field_tag "comment[user_id]", "#{current_user.id}" %>
+		<%= text_area_tag "comment[content]" %>
+		<input class="btn right submit-comments-btn" type="submit" />
+	<% end %>
+</div>
+<!-- Comments End -->
+
+<!-- Modal -->
+<div id="publishModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="publishModalLabel" aria-hidden="true">
+  <%= form_for "", url: "/content_layouts/publish", html: { id: "publish_form" } do %>
+    <div><%= hidden_field_tag "id" %></div>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="publishModalLabel">Publish content layout</h3>
+    </div>
+    <div class="modal-body">
+      <p>Publish to this path on the servers?</p>
+      <%= text_field_tag "path", @content.path %>
+      <p>with this file name?</p>
+      <%= text_field_tag "filename" %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button type="submit" class="btn btn-primary">Publish</button>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('a[data-toggle="modal"]').each(function(_, el) {
+      $(el).click(function() {
+        $('#publish_form #id').val($(el).data('id'));
+        $('#publish_form #filename').val($(el).data('name'));
+        $('#publish_form #path').val($('#content_path').data('path'));
+      });
+    });
+  });
+
+</script>

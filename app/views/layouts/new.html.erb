@@ -1,0 +1,14 @@
+<% provide(:title, 'New Layout') %>
+
+<h1 id="page-title">New Layout</h1>
+<div class="breadcrumbs">
+</div>
+
+<%= form_for @layout do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= render 'fields', f: f %>
+
+  <%= f.submit "Create Layout", :class => "btn" %>
+
+<% end %>

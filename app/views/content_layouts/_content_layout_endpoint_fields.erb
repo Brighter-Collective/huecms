@@ -1,0 +1,8 @@
+<div class="fields">
+  <%= f.hidden_field :content_layout_id, :value => @content_layout.id %>
+  <div class="form-item horizontal-item">
+    <%= f.select(:endpoint_id, Endpoint.all.map{|e| ["#{e.name} (#{e.type.gsub("Endpoint", "").upcase})", e.id]}) %>
+    <span class="remove-endpoint-link"><%= link_to_remove_fields( "remove", f, class: "btn") %></span>
+  </div>
+  <div class="clear"></div>
+</div>

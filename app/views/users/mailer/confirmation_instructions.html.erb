@@ -1,0 +1,19 @@
+
+
+<div class="content-wrapper not-signed-in" id="welcome-page">
+	<div class="header">
+		<div class="page-header left">Welcome</div>
+		<div class="clear"></div>
+	</div>
+	<div class="main-content single-column-layout">
+		<h1 class="page-title">Welcome <%= @email %>!</h1>
+		
+		<div class="clear"></div>
+
+		<p>You can confirm your account email through the link below:</p>
+
+		<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+		<div class="clear"></div>
+	</div>
+</div>

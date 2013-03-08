@@ -1,0 +1,26 @@
+<tr>
+  <td class="published">
+  	<div class="list-item-status <%= if content_layout.published then "approved" else "review" end%>"></div>
+  </td>
+  <td><%= link_to content_layout.name, [@content, content_layout] %></td>
+  <td><%= content_layout.layout.type.andand.gsub("Layout", "").andand.upcase %></td>
+  <td><%= time_ago_in_words(content_layout.updated_at) %> ago</td>
+  <td>
+    <% if current_user.role == 'admin' %>
+      <% case content_layout.layout.type %>
+      <% when "HtmlLayout" %>
+        <%= link_to "publish", "#publishModal", data: { id: content_layout.id,
+                                                        name: content_layout.name,
+                                                        toggle: "modal" } %>
+      <% else %>
+        <%= link_to "publish", content_layouts_publish_path(content_layout) %>
+      <% end %>
+  	<% end %>
+  </td>
+  <td>
+  	<%= link_to "edit", edit_content_content_layout_path(@content, content_layout) %>
+  </td>
+  <td>
+  	<%= link_to "delete", [@content, content_layout], method: :delete, data: { confirm: "You sure?" } %>
+  </td>
+</tr>

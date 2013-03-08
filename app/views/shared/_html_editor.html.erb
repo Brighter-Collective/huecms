@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="/codemirror/theme/eclipse.css">
+<link rel="stylesheet" type="text/css" href="/codemirror/lib/codemirror.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/codemirror-ui.css" media="screen" />
+<script type="text/javascript" src="/codemirror/lib/codemirror.js"></script>
+<script type="text/javascript" src="/javascripts/codemirror-ui.js"></script>
+
+<script type="text/javascript" src="/codemirror/addon/edit/matchbrackets.js"></script>
+<script type="text/javascript" src="/codemirror/addon/edit/continuecomment.js"></script>
+<script type="text/javascript" src="/codemirror/addon/selection/active-line.js"></script>
+
+<!-- Code Highlight -->
+<script type="text/javascript" src="/codemirror/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="/codemirror/mode/css/css.js"></script>
+<script type="text/javascript" src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script type="text/javascript" src="/codemirror/mode/xml/xml.js"></script>
+
+<script type="text/javascript">
+  //Put UI options here.
+  var uiOptions = { path : '/javascripts/', searchMode: 'popup', imagePath: '/images/silk' }
+
+  //All your normal CodeMirror options go here.
+  var codeMirrorOptions = {
+      mode: "htmlmixed",
+      theme: "eclipse",
+        matchBrackets: true,
+        styleActiveLine: true,
+      lineNumbers: true,
+        lineWrapping: true
+  }
+
+  var editor = new CodeMirrorUI(document.getElementById('code_editor'),
+                  uiOptions,
+                  codeMirrorOptions);
+</script>
+
+<style>
+	.CodeMirror
+	{
+		border: 1px solid black;
+		margin: 5px;
+	}
+	.CodeMirror-activeline-background
+	{
+		background: #e8f2ff !important;
+	}
+	.top_section { height: 100px; }
+</style>
+

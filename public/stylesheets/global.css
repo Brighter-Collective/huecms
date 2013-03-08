@@ -1,0 +1,149 @@
+/*** GLOBAL TYPOGRAPHY ***/
+body,html {height:100%;}
+body {font-family:Arial, Helvetica, sans-serif !important; font-size:12px; color:#666666;}
+
+h1 {font-size:30px; text-transform:uppercase; font-weight:bold; margin-bottom:0px !important; color:#666666 !important;}
+h2, label {font-size:20px; text-transform:uppercase; margin-bottom:5px; height:22px;}
+a, a:hover {text-decoration:none !important}
+
+.hidden { display: none; }
+.clear {clear:both; height:0.01%}
+.left {float:left;}
+.right {float:right;}
+#page-title { padding-bottom: 10px; }
+
+/*----- Inputs -----*/
+form #content_name{ margin:0 10px 0 0; }
+.form-item{ clear:both; margin-bottom: 20px; }
+.form-item.horizontal-item { margin-bottom: 5px; }
+.horizontal-item label{ 
+float: left; 
+margin-right: 10px; 
+margin-bottom: 5px;
+line-height: 28px; 
+vertical-align: middle; 
+background: 0; 
+text-shadow: none; 
+color: black; 
+font-size: 20px;
+text-transform: uppercase;
+width: 150px;
+height: 22px;
+font-weight: normal;
+color: #666;
+}
+
+/*------ Comments ------*/
+.comments { margin: 50px 0; }
+.comments .comments-content{ margin: 25px 0; }
+.comments .comments-content li{ margin: 25px 0; }
+.comments .table-right { width: 580px; padding: 10px 20px; border: 2px solid #ccc; border-radius: 10px; position: relative; }
+.comments .comment-info { margin-bottom: 10px; border-bottom: 1px solid #CCC; }
+.comments .user-image{ margin-right: 25px; width: 75px; }
+.comments .user-name { text-transform: uppercase; font-size: 18px; font-weight: bold; margin-right: 10px; }
+.comments .comment{ line-height: 20px; }
+.comments .icon-comment-box-pointer { position: absolute; top: 10px; left: -19px; width: 24px; height: 21px; }
+.comments form textarea{ resize: none; width: 100%; height: 100px; }
+.comments form .comment textarea[disabled]{ resize: none; width: 100%; height: 100%; background: none; border: none; box-shadow: none; cursor: auto; }
+.comments .comment-options span{ margin-left: 10px; cursor: pointer; }
+
+/*** HEADER   ***/
+header { background:url(/images/header-bar.png) repeat-x; height:45px; width:100%; color:#ffffff;}
+header .inner {width:960px; margin:auto; padding:0px 10px;}
+header .inner .main-logo {position:relative; top:14px; float:left}
+header .inner .admin-status {font-size:11px; width:400px; float:right; text-align:right; margin-top:18px;}
+header .inner .admin-status a {color:#ffffff;}
+header .inner .admin-status li {color:#ffffff;}
+
+
+/*** MAIN CONTENT ***/
+.main-content {width:960px; padding:0px 10px; margin:auto;}
+nav {text-transform:uppercase; font-size:14px; background:url(/images/nav-bg.png) repeat-y; width:180px; position:absolute; top:45px; bottom:0px;}
+
+nav ul { margin-top: 50px;}
+nav ul a {color:#666666; display:block; padding:8px 10px; width:100%; text-decoration:none;}
+nav ul a:hover {color:#ffffff; background:#5f259f;}
+
+.content {position:relative; left:180px; width:780px; padding:20px 20px 20px 50px;}
+.content a {color:#5f259f;}
+.content a:hover {color:#3d0081;}
+.content .breadcrumbs {text-transform:uppercase; margin-bottom:40px; margin-left:1px;}
+
+table.content-list {width:100%;}
+table.content-list td {padding:15px 10px 10px 10px;}
+table.content-list td.status {width: 75px;}
+table.content-list tr:nth-child(even) {background:#eeeeee;}
+table.content-list tr.heading td {font-size:14px; font-weight:bold; text-transform:uppercase;}
+table.content-list tr.heading td.date {width:130px; text-align:center;}
+table.content-list tr.heading td.action {width:90px;}
+table.content-list tr.heading td.author {width:130px;}
+table.content-list tr.heading {border-bottom:1px solid #666666; margin-bottom:4px;}
+
+table.content-list tr:last-child {border-bottom:1px solid #666666; margin-bottom:4px;}
+table.content-list tr.the-list td{ vertical-align: middle; padding: 10px;}
+table.content-list tr.the-list td.date {text-align:center; position:relative;}
+table.content-list tr.the-list td.date span {font-size:10px; position: absolute; left:30px; top:12px; line-height:12px;}
+table.content-list tr.the-list td.date span strong {font-size:12px;}
+table.content-list tr.the-list td.title {font-size:14px;}
+table.content-list tr.the-list td.action {font-size:12px; text-transform:uppercase;}
+table.content-list tr.the-list td.action a {font-size:11px;}
+
+.title-box {border:1px solid #cccccc; font-size:14px; border-radius:0px !important; }
+.title-box:focus {box-shadow:0px 0px 4px 2px rgba(65, 37, 159, 0.25) !important; border: 1px solid #5f259f !important;}
+
+.list-item-status{  width: 30px; height: 25px; margin: 0 auto; }
+.list-item-status.review{ background: url(/images/icons-content-type-page.png) no-repeat -54px -2px; }
+.list-item-status.approved{ background: url(/images/icons-content-type-page.png) no-repeat 3px -2px; }
+.list-item-status.rejected{ background: url(/images/icons-content-type-page.png) no-repeat -25px -2px; }
+
+/*** BUTTONS  ***/
+a.button, .button, .button a {color:#ffffff;}
+a.button, .button {padding:10px 20px 10px 20px; background:#5f259f; display:inline-block; color:#ffffff; font-size:15px; text-transform:uppercase; margin-top:20px; cursor: pointer;}
+a.sm.button.edit-title, .sm.button.edit-title {padding:3px 10px; font-size:11px; position:relative; top:-4px; left:10px; margin-top:0px;}
+a.button:hover, .button:hover {background:#3d0081; color:#ffffff;}
+.button a:hover { color: #FFF; }
+
+/*----- Users Page -----*/
+.users-list { text-align: left; width: 100%; margin-top: 40px; }
+.users-list td, .users-list th{ padding: 5px 10px; }
+.users-list thead{ border-bottom: 1px solid #000; }
+.users-list .notif-number { width: 70px; }
+.users-list .notif-email { width: 310px; }
+.users-list .notif-options span{ margin-right: 10px; }
+
+/*----- Contents Page -----*/
+.table { margin: 30px 0; }
+.table td{ vertical-align: middle; }
+
+/*---- Edit Content Layout -----*/
+.form-item.select-endpoints .form-item select{ float: left; }
+.remove-endpoint-link{
+line-height: 30px;
+vertical-align: middle;
+margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

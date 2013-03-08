@@ -1,0 +1,5 @@
+<div class="account-menu right">
+	<ul>
+		<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>, <%= current_user.display_name %></li>
+	</ul>
+</div>

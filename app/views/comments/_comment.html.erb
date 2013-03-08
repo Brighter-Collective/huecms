@@ -1,0 +1,33 @@
+<li>
+	<form class="comment_form">
+		<div class="table-left left"><div class="user-image"><img src="/images/icon-user-img-placeholder.png" /></div></div>
+		<div class="table-right left">
+			<div class="comment-info">
+				<div class="left">
+					<span class="user-name"><%= comment.user.first_name %></span>
+					<span class="comment-date">Posted <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago. </span>
+					<% if comment.edited_at %>
+						<span class="comment-date">Edited <%= distance_of_time_in_words(comment.edited_at, Time.now) %> ago</span>
+					<% end %>
+				</div>
+				<div class="comment-options right">
+					<% if current_user.id == comment.user_id %>
+						<span class="comment-edit">Edit</span>
+						<span class="comment-id" style="display:none" data-value=<%= "#{comment.id}" %>></span>
+						<span class="comment-delete">Delete</span>
+					<% end %>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="comment">
+				<textarea name="comment[content]" disabled="disabled"><%= comment.content %></textarea>
+		<div class="btn-update-options hidden right">
+			<span class="btn btn-cancel-comment">Cancel</span>
+			<input class="btn btn-update-comment" type="submit" value="update" />
+		</div>
+			</div>
+			<div class="icon-comment-box-pointer"><img src="/images/icon-comment-box-pointer.png" /></div>
+		</div>
+	</form>
+	<div class="clear"></div>
+</li>

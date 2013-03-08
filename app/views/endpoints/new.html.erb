@@ -1,0 +1,107 @@
+<% provide(:title, 'New Endpoint') %>
+<h1>New Endpoint</h1>
+
+<script>
+$('#endpointTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$(document).ready(function() {
+  $('#endpointTabs').find("[data-target='#<%= params[:tab_name] || 'server' %>']").tab('show')
+})
+</script>
+
+<ul id="endpointTabs" class="nav nav-tabs">
+  <li><a data-target="#server" data-toggle="tab">Server</a></li>
+  <li><a data-target="#facebook" data-toggle="tab">Facebook</a></li>
+  <li><a data-target="#twitter" data-toggle="tab">Twitter</a></li>
+</ul>
+<div id="endpointTabContent" class="tab-content">
+  <div class="tab-pane" id="server">
+    <%= form_for(@endpoint, as: :endpoint) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <fieldset>
+        <legend>Create server endpoint</legend>
+
+        <%= render 'ftp_fields', f: f %>
+
+        <div class="form-actions">
+          <%= link_to "Cancel", endpoints_path, class: "btn" %>
+          <%= f.submit "Create server endpoint", class: "btn btn-primary" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="tab-pane" id="facebook">
+    <% if ENV['FB_APP_ID'] && ENV['FB_APP_SECRET'] %>
+      <%= form_for(@endpoint) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <fieldset>
+          <legend>Create Facebook endpoint</legend>
+          <%= render 'facebook_fields', f:f %>
+
+          <div class="form-actions">
+            <%= link_to "Cancel", endpoints_path, class: "btn" %>
+            <%= f.submit "Create facebook endpoint", class: "btn btn-primary" %>
+          </div>
+        </fieldset>
+      <% end %>
+    <% else %>
+      <%= form_for "", url: "register_social_app" do |f| %>
+        <%= f.hidden_field :provider, value: "facebook" %>
+        <fieldset>
+          <legend>Set up your facebook app</legend>
+          <label>App Id</label>
+          <%= f.text_field :app_id %>
+          <label>App Secret</label>
+          <%= f.text_field :app_secret %>
+        
+          <p>
+            <small>You can configure this later in <a href="#">CMS Settings</a></small>
+          </p>
+          <div class="form-actions">
+            <%= link_to "Cancel", endpoints_path, class: "btn" %>
+            <%= f.button "Submit", class:"btn" %>
+          </div>
+        </fieldset>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="tab-pane" id="twitter">
+    <% if ENV['TWITTER_CONSUMER_KEY'] && ENV['TWITTER_CONSUMER_SECRET'] %>
+      <%= form_for(@endpoint) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <fieldset>
+          <legend>Create Twitter endpoint</legend>
+          <%= render 'twitter_fields', f:f %>
+
+          <div class="form-actions">
+            <%= link_to "Cancel", endpoints_path, class: "btn" %>
+            <%= f.submit "Create twitter endpoint", class: "btn btn-primary" %>
+          </div>
+        </fieldset>
+      <% end %>
+    <% else %>
+      <%= form_for "", url: "register_social_app" do |f| %>
+        <%= f.hidden_field :provider, value: "twitter" %>
+        <fieldset>
+          <legend>Set up your twitter app</legend>
+          <label>App Key</label>
+          <%= f.text_field :app_id %>
+          <label>App Secret</label>
+          <%= f.text_field :app_secret %>
+        
+          <p>
+            <small>You can configure this later in <a href="#">CMS Settings</a></small>
+          </p>
+          <div class="form-actions">
+            <%= link_to "Cancel", endpoints_path, class: "btn" %>
+            <%= f.button "Submit", class:"btn" %>
+          </div>
+        </fieldset>
+      <% end %>
+    <% end %>
+  </div>
+</div>

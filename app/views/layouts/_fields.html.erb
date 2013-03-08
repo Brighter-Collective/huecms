@@ -1,0 +1,15 @@
+
+<%= f.hidden_field :type, value: "HtmlLayout" %>
+
+<div class="form-item">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="form-item">
+  <%= f.label :content %>
+  <%= f.text_area :content, :id => 'code_editor' %>
+</div>
+
+<%= render 'shared/html_editor' %>
+

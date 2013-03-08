@@ -1,0 +1,22 @@
+  <tr class="the-list">
+    <td class="published">
+    	<%
+		    fully_published = true
+
+		    content.content_layouts.each do |b|
+		      fully_published = false if b.published == false || b.published.nil?
+		    end
+    	%>
+    	<div class="list-item-status <%= if fully_published && !content.needs_review then "approved" else "review" end%>"></div>
+    </td>
+    <td class="title"><%= link_to content.name, edit_content_path(content) %></td>
+    <td class="author"><%= content.user.email %></td>
+    <td class="date"><%= time_ago_in_words(content.updated_at) %> ago</td>
+    <td class="action">
+      <% if (!fully_published || content.needs_review) &&  current_user.role == 'admin' %>
+      	<%= link_to "publish", "/contents/" + content.id.to_s + "/publish", class: "action-link" %> &nbsp;
+      <% end %>
+      <%= link_to "edit", edit_content_path(content), class: "action-link" %> &nbsp;
+      <%= link_to "delete", content, method: :delete, data: { confirm: "You sure?" }, class: "action-link" %>
+    </td>
+  </tr>

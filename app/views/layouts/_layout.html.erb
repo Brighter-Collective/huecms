@@ -1,0 +1,7 @@
+<tr>
+  <td><%= layout.name %></td>
+  <td><%= time_ago_in_words(layout.updated_at) %> ago</td>
+  <td><%= link_to "edit", edit_layout_path(layout) %></td>
+  <td><%= link_to "delete", layout, method: :delete,
+                                    data: { confirm: "You sure?" } %></td>
+</tr>

@@ -1,0 +1,20 @@
+<div>
+  <select class="pull-right content_status">
+    <option value="0">ALL</option>
+    <option value="1">Needs Review</option>
+    <option value="2">Published</option>
+  </select>
+</div>
+
+<div class="clear"</div>
+
+<table class="content-list">
+  <tr class="heading">
+    <td class="status">Status</td>
+    <td class="title">Content Title</td>
+    <td class="author">Author</td>
+    <td class="date">Last Modified</td>
+    <td class="action">Action</td>
+  </tr>
+    <%= render @contents %>
+</table>

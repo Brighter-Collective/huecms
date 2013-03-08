@@ -1,0 +1,62 @@
+<% provide(:title, "Admin") %>
+<% provide(:header, "User Accounts") %>
+<h1>User Accounts</h1>
+<div class="breadcrumbs">
+	<a href="#">Home</a> //
+</div>
+
+<script src="/javascripts/admin.js" type="text/javascript"></script>
+
+<div class="edit-btns right">
+	<% if current_user.admin? %>
+	<div class="gradient-btn">
+		<!-- <div class="button"><a href="/admin/user/lookup/?user_id=0">Create New User</a></div> -->
+		<%= link_to "Create New User", "/admin/users/0/lookup/", class: "button add-new-content submit right" %>
+	</div>
+	<% end%>
+</div>
+
+<div class="clear"></div>
+
+<div class="info-tab notification-tab active">
+	<div class="tab-header"></div>
+	<div class="tab-content">
+		<table class="users-list table-hover">
+			<thead>
+				<tr>
+					<th class="notif-number">User ID</th>
+					<th class="notif-email">Email</th>
+					<th class="notif-type">Type</th>
+					<th class="notif-date">Date Created</th>
+					<th class="notif-options" colspan="2"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @users.length > 0 %>
+					<% @users.each do |user| %>
+					<tr>
+						<td class="notif-number"><%= user.id %></td>
+						<td class="notif-email">
+							<a href="/admin/users/<%=user.id%>/lookup/"><%= user.email %></a>
+						</td>
+						<td class="notif-type"><%= user.role %></td>
+						<td class="notif-date"><%= user.created_at.strftime("%m/%d/%Y") %></td>
+						<td class="notif-options">
+							<span class="edit-user"><a href="/admin/users/<%=user.id%>/lookup/">Edit</a></span>
+							<% if current_user.role == 'admin' %>
+							<span class="remove-user" id="<%=user.id%>">Delete</span>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				<% end%>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+

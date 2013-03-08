@@ -1,0 +1,10 @@
+
+<%= f.hidden_field :type, value: "FacebookEndpoint" %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<label>Pick a Facebook authentication</label>
+<%= f.select :authentication_id,
+             options_for_select(Hash[Authentication.where(provider: 'facebook').map{ |a| [a.username, a.id] }]) %>
+<%= link_to "Add a Facebook Account", "/auth/facebook", class: "btn" %>

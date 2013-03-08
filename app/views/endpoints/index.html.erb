@@ -1,0 +1,17 @@
+<% provide(:title, 'Endpoints') %>
+<h1>Endpoints</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Last Modified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render 'endpoint' %>
+  </tbody>
+</table>
+<%= link_to "Add new endpoint", new_endpoint_path, class: "btn btn-large" %>
+

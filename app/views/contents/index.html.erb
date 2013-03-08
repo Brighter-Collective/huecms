@@ -1,0 +1,25 @@
+<% provide(:title, 'Content Management') %>
+<h1 id="page-title">Content Management</h1>
+
+<ul id="viewTabs" class="nav nav-tabs">
+  <li><a href="#folder" data-toggle="tab">Folder View</a></li>
+  <li><a href="#list" data-toggle="tab">List View</a></li>
+</ul>
+<div id="viewTabsContent" class="tab-content">
+  <div class="tab-pane" id="folder">
+    <%= render @folder %>
+  </div>
+  <div class="tab-pane" id="list">
+    <%= render 'list_content' %>
+  </div>
+</div>
+
+<script>
+$('#viewTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+$(document).ready(function() {
+  $('#viewTabs li:eq(0) a').tab('show')
+})
+</script>

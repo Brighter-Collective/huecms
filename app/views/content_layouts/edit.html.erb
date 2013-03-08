@@ -1,0 +1,77 @@
+<% provide(:title, "Edit Content Layout") %>
+
+<%= javascript_include_tag 'content_layout.js'%>
+
+<h1><%= (@content.path + "/" + @content.name).html_safe %></h1>
+
+<%= form_for [@content, @content_layout], :html => { :multipart => true } do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <fieldset>
+    <% case @content_layout.layout.type %>
+    <% when "HtmlLayout" %>
+      <%= f.label :filename %>
+      <%= f.text_field :name %>
+
+      <% if @fields.empty? %>
+        <p><strong>We didn't find any content tags in your layout. Did you mean to do that?</strong></p>
+        <p>If you want to add content to this page insert a content tag in a layout like so,</p>
+        <pre>&lt;content type="text"&gt;My Content Name&lt;/content&gt;</pre>
+      <% end %>
+      <% @fields.each do |key| %>
+        <% if key[0] == "text" %>
+          <%= f.label key[1] %>
+          <%= f.text_area(:data, { id: 'editor1',
+                                   class: 'ckeditor',
+                                   name: "content_layout[data][#{key[1]}]",
+                                   value: @data["#{key[1]}"] || "",
+                                   rows: 5 }) %>
+        <% elsif key[0] == "image" %>
+          <% img_exists = @content_layout.images.select {|img| img.content_tag_name == key[1]}[0] %>
+          <% if img_exists %>
+            <%= image_tag(img_exists.source.url) %><br />
+            <%= link_to "delete", img_exists, :method => :delete, :confirm => "Are you sure?"%><br />
+          <% else %>
+            <%= f.label key[1] %>
+            <%= file_field_tag "content_layout[source][#{key[1]}]" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% when "FacebookLayout", "TwitterLayout" %>
+      <% @fields.each do |key| %>
+        <div class="form-item horizontal-item">
+          <%= f.label key[1] %>
+          <%= f.text_field(:data, { name: "content_layout[data][#{key[1]}]",
+                            value: @data["#{key[1]}"] || "" }) %>
+        </div>    
+      <% end %>
+    <% end %>
+
+    <div class="form-item select-endpoints">
+      <label>Select Endpoints</label>
+      <%= f.fields_for :content_layout_endpoints do |builder| %>
+        <%= render("content_layout_endpoint_fields", :f => builder) %>
+      <% end %>
+      <%= link_to_add_fields("Add Endpoint", f, :content_layout_endpoints, class: "btn") %>
+    </div>
+    <div class="form-actions">
+      <%= link_to "Back", edit_content_path(@content), class: "btn" %>
+      <%= f.submit "Save", class: "btn" %>
+    </div>
+  </fieldset>
+<% end %>
+<!-- Comments -->
+<div class="comments">
+	<label>Comments</label>
+	<ul class="comments-content">
+		<%= render :partial => '/comments/comment', :collection => @content_layout.comments %>
+	</ul>
+	<%= form_tag "", :id => "new_comment_form" do %>
+		<label>Leave Comment</label>
+		<%= hidden_field_tag "comment[commentable_id]", "#{@content_layout.id}" %>
+		<%= hidden_field_tag "comment[commentable_type]", "ContentLayout" %>
+		<%= hidden_field_tag "comment[user_id]", "#{current_user.id}" %>
+		<%= text_area_tag "comment[content]" %>
+		<input class="btn right submit-comments-btn" type="submit" />
+	<% end %>
+</div>
+<!-- Comments End -->

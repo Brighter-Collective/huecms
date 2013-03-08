@@ -1,0 +1,10 @@
+ <header>
+  <div class="inner navbar">
+    <%= link_to image_tag('/images/cms-logo.png'), root_path, class: 'main-logo' %>
+    <% if user_signed_in? %>
+      <div class="admin-status">
+        <%= render 'layouts/account_menu' %>
+      </div>
+    <% end %>
+  </div>
+</header>

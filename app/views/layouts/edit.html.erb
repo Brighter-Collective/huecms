@@ -1,0 +1,14 @@
+<% provide(:title, 'Edit Layout') %>
+<h1 id="page-title">Edit Layout</h1>
+<div class="breadcrumbs">
+</div>
+
+<%= form_for @layout, :as => :layout do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= render 'fields', f: f %>
+
+  <%= link_to "Back", layouts_path, class: "btn" %>
+  <%= f.button "Save", class: "btn" %>
+<% end %>

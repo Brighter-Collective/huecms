@@ -1,0 +1,9 @@
+<%= f.hidden_field :type, value: "TwitterEndpoint" %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<label>Pick a Twitter authentication</label>
+<%= f.select :authentication_id,
+             options_for_select(Hash[Authentication.where(provider: 'twitter').map{ |a| [a.username, a.id] }]) %>
+<%= link_to "Add a Twitter Account", "/auth/twitter", class: "btn" %>
