@@ -1,13 +1,12 @@
 # HueCMS
 Prerequisite: You will need to install Ruby on Rails in order to use the HueCMS.
 
-## Ruby on Rails Installation instructions:
+## Quick Install:
 Download and install like any typical Rails app
+
 1. From the project directory, run `bundle install`
 2. Then run `rake db: migrate`
 3. Start the server: `rails server`
-
----
 
 ## What’s HUE CMS?
 
@@ -15,16 +14,14 @@ HUE CMS is a way for all users (even non-technical folk!) to easily manage all
 of their online content in one place. It is platform agnostic and can be pushed
 to multiple sources (including FTP, SFTP, Facebook, Twitter, and more to come.)
 
-Features include:
-1. Revision history
-2. Moderator/author workflows
-3. Comments
-4. Syntax highlighting for HTML, Javascript, and CSS
-5. Email notifications
+### Features include:
+- Revision history
+- Moderator/author workflows
+-  Comments
+- Syntax highlighting for HTML, Javascript, and CSS
+- Email notifications
 
----
-
-## Quick Instructions:
+## Quick Guide:
 1. Login with: admin@huecms.com
 2. Password is: password
 3. Create an endpoint
@@ -37,7 +34,6 @@ Features include:
       <content type="text">main</content>
     </body>
     </html>`
-
 5. Create content
 6. Add a layout to said content
 7. Fill out content layout form
