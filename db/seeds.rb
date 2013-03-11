@@ -9,7 +9,7 @@ Layout.create(name: "Twitter Status Update",
               content: '<content type="text">tweet</content>',
               type: "TwitterLayout")
 Folder.create(name: "/")
-u = User.new({:email => "admin@hellocms.com", :password => "password", :password_confirmation => "password" })
+u = User.new({:email => "admin@huecms.com", :password => "password", :password_confirmation => "password" })
 u.role = "admin"
 u.save
 

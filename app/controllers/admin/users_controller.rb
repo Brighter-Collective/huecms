@@ -7,11 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def lookup
-  	if params[:user_id].to_i != 0
-  		@user = User.find( params[:user_id] )
-    else
-  		@user = ''
-  	end
+    @user = params[:user_id].to_i != 0 ? User.find( params[:user_id] ) : ''
   end
 
   def update_user
@@ -20,7 +16,7 @@ class Admin::UsersController < ApplicationController
     params[:user].delete("password") if params[:user][:password] == ''
 
     if user.update_attributes( params[:user] )
-      redirect_to '/admin/users'
+      redirect_to admin_users_path
     else
       flash[:error] = "There was an error."
       return render :json => {:error => 'failure'}
