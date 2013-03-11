@@ -8,7 +8,7 @@ Download and install like any typical Rails app
 2. Then run `rake db: migrate`
 3. Start the server: `rails server`
 
-## What’s HUE CMS?
+## What’s HueCMS?
 
 HUE CMS is a way for all users (even non-technical folk!) to easily manage all
 of their online content in one place. It is platform agnostic and can be pushed
