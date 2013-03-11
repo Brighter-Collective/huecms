@@ -10,7 +10,7 @@ Download and install like any typical Rails app
 
 ## What’s HueCMS?
 
-HUE CMS is a way for all users (even non-technical folk!) to easily manage all
+HueCMS is a way for all users (even non-technical folk!) to easily manage all
 of their online content in one place. It is platform agnostic and can be pushed
 to multiple sources (including FTP, SFTP, Facebook, Twitter, and more to come.)
 
