@@ -5,8 +5,9 @@ Prerequisite: You will need to install Ruby on Rails in order to use the HueCMS.
 Download and install like any typical Rails app
 
 1. From the project directory, run `bundle install`
-2. Then run `rake db: migrate`
-3. Start the server: `rails server`
+2. Run `rake db: migrate`
+3. Then `rake db:seed`
+3. Now start the server: `rails server`
 
 ## What’s HueCMS?
 
